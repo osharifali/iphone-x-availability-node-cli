@@ -7,12 +7,13 @@
     "start": "node index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "Carlos E Silva",
+  "author": "Carlos E Silva + Omar Sharifali",
   "license": "ISC",
   "dependencies": {
     "command-line-args": "^4.0.7",
     "command-line-usage": "^4.0.1",
-    "node-fetch": "^1.7.3"
+    "node-fetch": "^1.7.3",
+    "twilio": "^3.10.0"
   },
   "devDependencies": {
     "eslint": "^4.10.0",

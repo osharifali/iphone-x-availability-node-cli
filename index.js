@@ -5,13 +5,18 @@ const getUsage = require('command-line-usage');
 
 // Get partNumbers from json file.
 const partNumbers = require('./partNumbers.json');
-
+var accountSid = 'YOUR_ACCOUNT_SID'; // Your Account SID from www.twilio.com/console
+var authToken = 'YOUR_AUTH_TOKEN';   // Your Auth Token from www.twilio.com/console
+var yourPhoneNumber = '+11234567890' // Your phone you want the text to be sent too 
+var twilioNumber = '+11234567890' // Phone number from your Twilio account
+var twilio = require('twilio');
+var client = new twilio(accountSid, authToken);
 // Define command line args accepted.
 const optionDefinitions = [
   {
     name: 'carrier',
     type: String,
-    defaultValue: 'TMOBILE',
+    defaultValue: 'ATT',
     description:
       "Define which carrier to search for.  Accepted options are: 'ATT', 'SPRING', 'TMOBILE', 'VERIZON'.",
   },
@@ -32,7 +37,7 @@ const optionDefinitions = [
   {
     name: 'storage',
     type: String,
-    defaultValue: 256,
+    defaultValue: 64,
     description: "Define which storage size to search for.  Accepted options are: '64', '256'.",
   },
   {
@@ -44,17 +49,21 @@ const optionDefinitions = [
   {
     name: 'distance',
     type: Number,
-    defaultValue: 60,
+    defaultValue: 40,
     description: 'Define the distance from the supplied zip code to look for iPhone.',
   },
   {
     name: 'delay',
     type: Number,
-    defaultValue: 30,
+    defaultValue: 120,
     description: 'Define the number of seconds between requests.',
   },
   { name: 'help', type: Boolean, description: 'Display this help screen.' },
 ];
+
+
+
+
 
 // Parse command line args.
 const options = commandLineArgs(optionDefinitions);
@@ -72,7 +81,7 @@ const usageDefinition = [
       {
         desc: 'Default arguments.',
         example:
-          '$ node index.js [bold]{--carrier} TMOBILE [bold]{--model} x [bold]{--color} gray [bold]{--storage} 256 [bold]{--delay} 30 [bold]{--distance} 60',
+          '$ node index.js [bold]{--carrier} ATT [bold]{--model} x [bold]{--color} gray [bold]{--storage} 64 [bold]{--delay} 30 [bold]{--distance} 60',
       },
       {
         desc: 'Simple example',
@@ -124,6 +133,14 @@ function updateStatus() {
   process.stdout.write(`Status: Device not available. Last request made ${timeInSeconds} seconds ago\r`);
 }
 
+
+function sendSMS(locations) {
+  client.messages.create({
+    body: 'iPhone X available at: ' + locations,
+    to: yourPhoneNumber,  // Text this number
+    from: twilioNumber // From a valid Twilio number
+  }).then((message) => console.log(message.sid));
+}
 /**
  * Parse the returned data and find stores where the device is available
  *
@@ -187,6 +204,10 @@ function displayStoresAvailable(storesAvailable) {
   // Output the message.
   console.log(`The device is currently available at ${storesAvailable.length} stores near you:`);
   console.log(storesAvailableStr);
+
+  //text person
+  sendSMS(storesAvailableStr);
+
 }
 
 /**
@@ -222,3 +243,4 @@ setInterval(() => {
 
 // Kick off request recursion.
 requestLoop();
+
