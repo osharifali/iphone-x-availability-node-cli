@@ -1,4 +1,4 @@
-#Fork off of Carlos E Silva's iPhone X Alerter for SMS
+###Fork off of Carlos E Silva's iPhone X Alerter for SMS
 Sends you and SMS via Twilio when stock is found. Same instructions.
 
 Just install Twilio via npm and put your Twilio phone number, your actual phone number, and your Twilio credentials in corresponding spots. Then run as usual.
