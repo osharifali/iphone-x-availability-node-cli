@@ -5,10 +5,16 @@ const getUsage = require('command-line-usage');
 
 // Get partNumbers from json file.
 const partNumbers = require('./partNumbers.json');
+
+
+// FILL IN THESE 4 LINES
 var accountSid = 'YOUR_ACCOUNT_SID'; // Your Account SID from www.twilio.com/console
 var authToken = 'YOUR_AUTH_TOKEN';   // Your Auth Token from www.twilio.com/console
 var yourPhoneNumber = '+11234567890' // Your phone you want the text to be sent too 
 var twilioNumber = '+11234567890' // Phone number from your Twilio account
+
+
+
 var twilio = require('twilio');
 var client = new twilio(accountSid, authToken);
 // Define command line args accepted.
