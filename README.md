@@ -1,16 +1,14 @@
-###Fork off of Carlos E Silva's iPhone X Alerter for SMS
+# iPhone X Availability Node CLI + SMS Alerter
+
 Sends you and SMS via Twilio when stock is found. Same instructions.
 
 Just install Twilio via npm and put your Twilio phone number, your actual phone number, and your Twilio credentials in corresponding spots. Then run as usual.
 
-To install Twilio
+To install Twilio:
 '''
 npm install twilio
 '''
 
-
-
-# iPhone X Availability Node CLI
 
 A node cli tool I put together to check the iPhone X in-store availability near me instead of having to refresh the apple website over and over again.
 
@@ -28,10 +26,11 @@ It continously makes requests to Apple's availability api. When it finds some ne
 
 ### How to use
 
-1. Clone this repository `git clone https://github.com/carlosesilva/iphone-x-availability-node-cli.git`
-1. Go into the directory `cd iphone-x-availability-node-cli`
-1. Instal dependencies `npm install`
-1. Run the program `node index.js --zip=12345`
+1. Clone this repository `git clone https://github.com/osharifali/iphone-x-availability-node-cli.git`
+2. Go into the directory `cd iphone-x-availability-node-cli`
+3. Install dependencies `npm install`
+4. Enter Twilio information in index.js file. 
+5. Run the program `node index.js --zip=12345`
 
 ### Examples
 
