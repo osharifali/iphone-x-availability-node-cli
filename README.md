@@ -1,13 +1,14 @@
 # iPhone X Availability Node CLI + SMS Alerter
 
+### Twilio Setup
 Sends you and SMS via Twilio when stock is found. Same instructions.
 
 Just install Twilio via npm and put your Twilio phone number, your actual phone number, and your Twilio credentials in corresponding spots. Then run as usual.
 
 To install Twilio:
-'''
+```
 npm install twilio
-'''
+```
 
 
 A node cli tool I put together to check the iPhone X in-store availability near me instead of having to refresh the apple website over and over again.
