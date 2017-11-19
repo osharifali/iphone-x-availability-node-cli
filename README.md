@@ -11,6 +11,7 @@ npm install twilio
 ```
 
 
+### Instructions
 A node cli tool I put together to check the iPhone X in-store availability near me instead of having to refresh the apple website over and over again.
 
 **Warning**: This was very quickly put together so it is very rough and has a lot of room for improvement. It did end up being successful in letting me know there was some new stock near me a few hours after I built it so at the very least: it works!
